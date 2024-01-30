@@ -5,11 +5,11 @@ public class Stock {
 	private double probabilityIncreasePrice;
 	private double possibleNewPrice;
 
-	public Stock(double price, double probabilityIncreasePrice, double possibleNewPrice) {
+	public Stock() {
 		super();
-		this.price = price;
-		this.probabilityIncreasePrice = probabilityIncreasePrice;
-		this.possibleNewPrice = possibleNewPrice;
+		price = getRandomInitialPrice();
+		probabilityIncreasePrice = getRandomProbIncreasePrice();
+		possibleNewPrice = getRandomPossibleNewPrice();
 	}
 
 	public double getPrice() {
@@ -34,6 +34,23 @@ public class Stock {
 
 	public void setPossibleNewPrice(double possibleNewPrice) {
 		this.possibleNewPrice = possibleNewPrice;
+	}
+
+	@Override
+	public String toString() {
+		return "\n" + this.price + " " + this.probabilityIncreasePrice + " " + this.possibleNewPrice;
+	}
+
+	private double getRandomInitialPrice() {
+		return 1 + (Math.random() * 99);
+	}
+
+	private double getRandomProbIncreasePrice() {
+		return 0 + (Math.random() * 1);
+	}
+
+	private double getRandomPossibleNewPrice() {
+		return price + (probabilityIncreasePrice * price);
 	}
 
 }
