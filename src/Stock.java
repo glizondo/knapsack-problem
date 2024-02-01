@@ -1,15 +1,19 @@
 
+//I don't think your generateRandomPossibleNewPrice function is accurate to what the assignment wants. Please take another look and let me know.
+//For now, I've altered this class to what I think was required.
 public class Stock {
 
 	private double price;
 	private double probabilityIncreasePrice;
 	private double possibleNewPrice;
+	private double possibleEarningAmnt;
 
 	public Stock() {
 		super();
-		price = getRandomInitialPrice();
-		probabilityIncreasePrice = getRandomProbIncreasePrice();
-		possibleNewPrice = getRandomPossibleNewPrice();
+		price = generateRandomInitialPrice();
+		probabilityIncreasePrice = generateRandomProbIncreasePrice();
+		possibleNewPrice = generateRandomPossibleNewPrice();
+		possibleEarningAmnt =  generatePossibleEarningAmnt(possibleNewPrice, price, probabilityIncreasePrice);
 	}
 
 	public double getPrice() {
@@ -36,21 +40,43 @@ public class Stock {
 		this.possibleNewPrice = possibleNewPrice;
 	}
 
+	public double getPossibleEarningAmnt() {
+		return possibleEarningAmnt;
+	}
+
+	public void setPossibleEarningAmnt(double possibleEarningAmnt) {
+		this.possibleEarningAmnt = possibleEarningAmnt;
+	}
+
 	@Override
 	public String toString() {
-		return "\n" + this.price + " " + this.probabilityIncreasePrice + " " + this.possibleNewPrice;
+		return "\n" + this.price + " " + this.probabilityIncreasePrice + " " + this.possibleNewPrice + " " + this.possibleEarningAmnt;
 	}
 
-	private double getRandomInitialPrice() {
-		return 1 + (Math.random() * 99);
+	private double generateRandomInitialPrice() {
+		double value = 1 + (Math.random() * 99);
+		return Math.floor(value * 100) / 100;
 	}
 
-	private double getRandomProbIncreasePrice() {
-		return 0 + (Math.random() * 1);
+	private double generateRandomProbIncreasePrice() {
+		double value = 0 + (Math.random() * 1);
+		return Math.floor(value * 100) / 100;
 	}
-
-	private double getRandomPossibleNewPrice() {
+	
+	private double generateRandomPossibleNewPrice() {
+		double value = 1 + (Math.random() * 199);
+		return Math.floor(value * 100) / 100;
+	}
+	
+	private double generatePossibleEarningAmnt(double possibleNewPrice, double price, double probabilityIncreasePrice) {
+		double value = (possibleNewPrice - price) * probabilityIncreasePrice;
+		return Math.floor(value * 100) / 100;
+	}
+	
+	/*
+	private double generateRandomPossibleNewPrice() {
 		return price + (probabilityIncreasePrice * price);
 	}
+	*/
 
 }
