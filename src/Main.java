@@ -9,10 +9,16 @@ public class Main {
 		int capacity = 2500;
 		int numberStocks = 5000;
 		List<Stock> stockChoices = generator.generateRandom(numberStocks);
+		
 		// Greedy
+		long greedyBegin = System.currentTimeMillis();
 		System.out.println(greedyKnapsack(stockChoices, capacity));
+		long greedyEnd = System.currentTimeMillis();
+		long greedyTime = greedyEnd - greedyBegin;
+		System.out.println("Greedy time: " + greedyTime);
 
 		// Optimal
+		long optimalBegin = System.currentTimeMillis();
 		double[][] arrayStocks = new double[stockChoices.size() + 1][capacity + 1];
 		System.out.println("\n" +"Total earned optimal: " + optimalKnapsack(stockChoices, capacity, arrayStocks));
 		List<List<Stock>> allCombinations = new ArrayList<>();
@@ -27,7 +33,9 @@ public class Main {
 		    }
 		    System.out.println("Combination value: " + Math.floor(combinationSum * 100) / 100);
 		}
-
+		long optimalEnd = System.currentTimeMillis();
+		long optimalTime = optimalEnd - optimalBegin;
+		System.out.println("Optimal time: " + optimalTime);
 	}
 
 	public static Double optimalKnapsack(List<Stock> stockChoices, int capacity, double[][] arrayStocks) {
