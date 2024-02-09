@@ -5,6 +5,10 @@ public class Item {
 	protected double probabilityIncreaseValue;
 	protected double possibleNewValue;
 	protected double earning;
+	
+	public Item() {
+		
+	}
 
 	public double getWeight() {
 		return weight;
@@ -22,12 +26,12 @@ public class Item {
 		this.probabilityIncreaseValue = probabilityIncreaseValue;
 	}
 
-	public double getPossibleNewPrice() {
+	public double getPossibleNewValue() {
 		return possibleNewValue;
 	}
 
-	public void setPossibleNewPrice(double possibleNewPrice) {
-		this.possibleNewValue = possibleNewPrice;
+	public void setPossibleNewValue(double possibleNewValue) {
+		this.possibleNewValue = possibleNewValue;
 	}
 
 	public double getEarning() {
